@@ -20,7 +20,14 @@ export class AllPostsComponent {
   ngOnInit():void {
     // this.service.getAllPosts().subscribe(console.log);
     this.post$.subscribe(console.log);
-    this.service.deletePost(100);
   }
+
+  deleteOne(id: number){
+    this.service.deletePost(id).subscribe(data => {
+      this.data$ = this.service.getAllPosts();
+    });
+  }
+
+
 
 }
