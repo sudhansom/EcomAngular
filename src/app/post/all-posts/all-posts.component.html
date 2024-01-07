@@ -1,1 +1,18 @@
-<p>all-posts works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>UserId</th>
+      <th>id</th>
+      <th>title</th>
+      <th>body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data$ | async">
+      <td>{{d.userId}}</td>
+      <td>{{d.id}}</td>
+      <td>{{d.title}}</td>
+      <td>{{d.body}}</td>
+    </tr>
+  </tbody>
+</table>
