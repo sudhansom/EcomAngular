@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { PostService } from '../post.service';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Post } from '../post';
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +19,7 @@ export class AllPostsComponent {
 
   ngOnInit():void {
     // this.service.getAllPosts().subscribe(console.log);
-    this.post$.subscribe(console.log);
+    //this.post$.subscribe(console.log);
   }
 
   deleteOne(id: number){
@@ -27,7 +27,21 @@ export class AllPostsComponent {
       this.data$ = this.service.getAllPosts();
     });
   }
+  findOne(id: number){
+    //this.service.getOnePost(id).subscribe(console.log);
+  }
+  updateOne(id: number){
+    let abc = this.service.getOnePost(id).pipe(switchMap(post =>{
+      post.userId = 3345;
+      post.title = 'resham';
+    console.log(post);
 
+      return this.service.updateOne(id, post)}));
+    abc.subscribe(data => {
+      console.log('updated. ',data)
+      this.data$ = this.service.getAllPosts();
+    });
+  }
 
 
 }
