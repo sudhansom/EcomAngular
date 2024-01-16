@@ -17,6 +17,7 @@ export class SigninSignupComponent {
       name: new FormControl('', Validators.required),
       mobNumber: new FormControl('', Validators.required),
       age: new FormControl(0, Validators.required),
+      
     })
   }
 
