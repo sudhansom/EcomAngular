@@ -1,1 +1,84 @@
-<p>signin-signup works!</p>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Registration: Reactive form:</h3>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label>Name:
+            </label>
+            <input id="name" type="text" formControlName="name" class="form-control">
+          </div>
+          <div class="form-group mb-3">
+            <label for="mobNumber">Mobile Number
+            </label>
+
+              <input id="mobNumber" type="text" formControlName="mobNumber" class="form-control">
+          </div>
+          <div class="form-group mb-3">
+            <label for="dob">Enter your DOB:
+            </label>
+            <input id="dob" type="date" formControlName="age" class="form-control">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-3">
+              <label for="email">Email:</label>
+              <input id="email" type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group col-md-6 mb-3">
+              <label for="password">Password:</label>
+              <input id="password" type="password" class="form-control" formControlName="password">
+            </div>
+            <div class="form-group col-md-6 mb-3">
+              <label for="address">Address :</label>
+              <input id="addressLine1" type="text" class="form-control" formControlName="addressLine1">
+            </div>
+            <div class="form-group col-md-6 mb-3">
+              <label for="address">Address 2:</label>
+              <input id="addressLine2" type="text" class="form-control" formControlName="addressLine2">
+            </div>
+            <div class="form-group col-md-4 mb-3">
+              <label for="city">City:</label>
+              <input id="city" type="text" class="form-control" formControlName="city">
+            </div>
+            <div class="form-group col-md-4 mb-3">
+              <label for="state">State:</label>
+              <input id="state" type="text" class="form-control" formControlName="state">
+            </div>
+            <div class="form-group col-md-4 mb-3">
+              <label for="zipcode">ZipCode:</label>
+              <input id="zipcode" type="text" class="form-control" formControlName="zipcode">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="language">Language:</label>
+            <select name="" id="" class="form-control">
+              <option value="">Nepali</option>
+              <option value="">Hindi</option>
+              <option value="">English</option>
+              <option value="">Danish</option>
+              <option value="">Norsk</option>
+              <option value="">Sanshkrit</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <div class="form-check form-check-inline">
+              <input id="male" type="radio" class="form-check-inline" formControlName="gender" value="male">
+              <label for="male" class="form-check-inline">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input id="female" type="radio" class="form-check-inline" formControlName="gender" value="female">
+              <label for="female" class="form-check-inline">female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input id="others" type="radio" class="form-check-inline" formControlName="gender" value="others">
+              <label for="others" class="form-check-inline">others</label>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
