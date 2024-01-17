@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { SigninSignupComponent } from './customer/signin-signup/signin-signup.component';
 import { SellerDashboardComponent } from './customer/seller/seller-dashboard/seller-dashboard.component';
 import { PageNotFoundComponent } from './shared/layouts/page-not-found/page-not-found.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 
 export const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
@@ -20,7 +21,7 @@ export const routes: Routes = [
     {path: "admin-login", component: AdminLoginComponent},
   ]},
   {path: '', children: [
-    {path: 'admin-dashboard', component: AdminDashboardComponent},
+    {path: 'admin-dashboard', canActivate: [AuthGuardService], component: AdminDashboardComponent},
     {path: "admin/user", component: UserCrudComponent},
     {path: "admin/product", component: ProductComponent}
   ]},

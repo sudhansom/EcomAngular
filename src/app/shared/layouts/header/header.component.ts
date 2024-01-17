@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     console.log(this.role$.value);
   }
 
-  logout(){
+  onLogout(){
     console.log('hlkdjfkldsjfsd');
     localStorage.removeItem('isLoggedIn');
     this.isLoggedIn$.next('');
