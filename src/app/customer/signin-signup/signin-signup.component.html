@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div *ngIf="!login" class="col-md-6 offset-md-3">
+      <div *ngIf="(loginMode$ | async)==='register'" class="col-md-6 offset-md-3">
         <h3>Registration: Reactive form:</h3>
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
           <div class="form-group mb-3">
@@ -79,7 +79,7 @@
           <button class="btn btn-primary" type="submit">Submit</button>
         </form>
       </div>
-      <div *ngIf="login" class="col-md-6 offset-md-3 mt-3">
+      <div *ngIf="(loginMode$ | async)==='login'" class="col-md-6 offset-md-3 mt-3">
         <h3>Template Driven Form:</h3>
         <form #form="ngForm" (ngSubmit)="onLogin(form)">
           <div class="form-group mb-3">

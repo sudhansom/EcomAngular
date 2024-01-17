@@ -1,20 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormsModule, NgForm } from '@angular/forms';
 import { ApiService } from '../../core/services/api.service';
 import { LoginSignupService } from '../../shared/services/login-signup.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-signin-signup',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './signin-signup.component.html',
-  styleUrl: './signin-signup.component.scss'
+  styleUrl: './signin-signup.component.scss',
 })
-export class SigninSignupComponent {
+export class SigninSignupComponent implements OnInit, DoCheck {
   signupForm!: FormGroup;
-  login = true;
+  loginMode$ = new BehaviorSubject<string>('login');
 
   constructor(private apiService: LoginSignupService, private router: Router){}
 
@@ -34,12 +35,24 @@ export class SigninSignupComponent {
   }
   onLogin(form: NgForm){
     this.apiService.adminLogin(form.value.email, form.value.password).subscribe(data => {
-      localStorage.setItem('role', data[0].role);
+      if(data.length){
+        localStorage.setItem('role', data[0].role);
+      }else {
+        localStorage.removeItem('role');
+      }
       if(localStorage.getItem('role')){
         localStorage.setItem('isLoggedIn', 'true');
         this.router.navigate(['/']);
       }
     });
     form.reset();
+  }
+
+  ngDoCheck(): void {
+      if(this.router.url==='/sign-in'){
+        this.loginMode$.next('login');
+      }else {
+        this.loginMode$.next('register');
+      }
   }
 }
