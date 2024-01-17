@@ -1,4 +1,36 @@
 {
+  "users": [
+    {
+      "userId": 1,
+      "role" : "admin",
+      "name": "Som",
+      "email": "som@gmail.com"
+    },
+    {
+      "userId": 2,
+      "role" : "buyer",
+      "name": "Sudhan",
+      "email": "sudhan@gmail.com"
+    },
+    {
+      "userId": 3,
+      "role" : "seller",
+      "name": "Resham",
+      "email": "resham@gmail.com"
+    },
+    {
+      "userId": 4,
+      "role" : "buyer",
+      "name": "Biren",
+      "email": "biren@gmail.com"
+    },
+    {
+      "userId": 5,
+      "role" : "buyer",
+      "name": "Bal",
+      "email": "bal@gmail.com"
+    }
+  ],
   "posts": [
     {
       "userId": 3345,
