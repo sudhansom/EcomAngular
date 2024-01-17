@@ -1,34 +1,39 @@
 {
-  "users": [
+  "user": [
     {
       "userId": 1,
       "role" : "admin",
       "name": "Som",
-      "email": "som@gmail.com"
+      "email": "som@gmail.com",
+      "password": "123456"
     },
     {
       "userId": 2,
       "role" : "buyer",
       "name": "Sudhan",
-      "email": "sudhan@gmail.com"
+      "email": "sudhan@gmail.com",
+      "password": "123456"
     },
     {
       "userId": 3,
       "role" : "seller",
       "name": "Resham",
-      "email": "resham@gmail.com"
+      "email": "resham@gmail.com",
+      "password": "123456"
     },
     {
       "userId": 4,
       "role" : "buyer",
       "name": "Biren",
-      "email": "biren@gmail.com"
+      "email": "biren@gmail.com",
+      "password": "123456"
     },
     {
       "userId": 5,
       "role" : "buyer",
       "name": "Bal",
-      "email": "bal@gmail.com"
+      "email": "bal@gmail.com",
+      "password": "123456"
     }
   ],
   "posts": [

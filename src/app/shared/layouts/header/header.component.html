@@ -24,13 +24,13 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/admin-dashboard">Admin</a>
+          <a *ngIf="(role$ | async) === 'admin'"  class="nav-link active" routerLink="/admin-dashboard">Admin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/seller-dashboard">Seller</a>
+          <a *ngIf="(role$ | async) === 'seller'" class="nav-link active" routerLink="/seller-dashboard">Seller</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/buyer-dashboard">Buyer</a>
+          <a *ngIf="(role$ | async) === 'buyer'"  class="nav-link active" routerLink="/buyer-dashboard">Buyer</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -38,14 +38,14 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li *ngIf="(isLoggedIn$ | async) ===''" class="nav-item">
           <a class="nav-link active" routerLink="/sign-in">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/sign-up">Register</a>
+        <li *ngIf="(isLoggedIn$ | async)===''" class="nav-item">
+          <a  class="nav-link active" routerLink="/sign-up">Register</a>
         </li>
-        <li class="nav-item">
-          <button class="nav-link active" onclick="logout()">Logout</button>
+        <li *ngIf="(isLoggedIn$ | async) === 'true'" class="nav-item">
+          <button class="nav-link active" type="button" click="logout()">Logout</button>
         </li>
       </ul>
     </div>
