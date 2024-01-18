@@ -10,12 +10,14 @@ import { SigninSignupComponent } from './customer/signin-signup/signin-signup.co
 import { SellerDashboardComponent } from './customer/seller/seller-dashboard/seller-dashboard.component';
 import { PageNotFoundComponent } from './shared/layouts/page-not-found/page-not-found.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { SubscribeComponent } from './customer/subscribe/subscribe.component';
 
 export const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
   {path: "home", component: HomeComponent},
   {path: "my-profile", component: UserProfileComponent},
   {path: "contact-us", component: ContactUsComponent},
+  {path: "subscribe", component: SubscribeComponent},
   // admin
   {path: '', children: [
     {path: "admin-login", component: AdminLoginComponent},
