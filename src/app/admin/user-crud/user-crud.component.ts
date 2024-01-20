@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './user-crud.component.scss'
 })
 export class UserCrudComponent {
-
 }
