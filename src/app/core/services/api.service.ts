@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,9 @@ export class ApiService {
       "Access-Control-Allow-Origin": "*"
     })
   }
+  role$ = new Subject();
+  isLoggedIn$ = new BehaviorSubject(false);
+
   constructor(private http: HttpClient) { }
 
   private formatErrors (error: any){

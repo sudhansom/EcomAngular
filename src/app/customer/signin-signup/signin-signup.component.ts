@@ -17,7 +17,7 @@ export class SigninSignupComponent implements OnInit, DoCheck {
   signupForm!: FormGroup;
   loginMode$ = new BehaviorSubject<string>('login');
 
-  constructor(private apiService: LoginSignupService, private router: Router){}
+  constructor(private apiService: LoginSignupService, private api: ApiService, private router: Router){}
 
   ngOnInit(){
     this.signupForm = new FormGroup({
@@ -37,13 +37,13 @@ export class SigninSignupComponent implements OnInit, DoCheck {
     this.apiService.adminLogin(form.value.email, form.value.password).subscribe(data => {
       if(data.length){
         localStorage.setItem('role', data[0].role);
-      }else {
-        localStorage.removeItem('role');
-      }
-      if(localStorage.getItem('role')){
-        localStorage.setItem('isLoggedIn', 'true');
+        this.api.role$.next(data[0].role);
+        this.api.isLoggedIn$.next(true);
         this.router.navigate(['/']);
+      }else {
+        this.api.role$.next('');
       }
+
     });
     form.reset();
   }

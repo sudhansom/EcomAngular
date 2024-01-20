@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, DoCheck, OnInit } from '@angular/core';
 import {RouterModule } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -10,24 +11,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit, DoCheck {
-  role$ = new BehaviorSubject<string>('');
-  isLoggedIn$ = new BehaviorSubject<string>('');
+export class HeaderComponent implements DoCheck {
+  role$ = this.apiService.role$;
+  isLoggedIn$ = this.apiService.isLoggedIn$;
 
-  ngOnInit(){
-    this.role$.next(localStorage.getItem('role')??localStorage.getItem('role') as string);
-    console.log(this.role$.value);
-  }
+  constructor(private apiService: ApiService){}
+
 
   ngDoCheck(): void {
-    this.role$.next(localStorage.getItem('role')??localStorage.getItem('role') as string);
-    this.isLoggedIn$.next(localStorage.getItem('isLoggedIn')??localStorage.getItem('isLoggedIn') as string);
-    console.log(this.role$.value);
+    this.role$ = this.apiService.role$;
+    this.isLoggedIn$ = this.apiService.isLoggedIn$;
+    this.role$.subscribe(data => console.log('roles:', data));
   }
 
   onLogout(){
-    console.log('hlkdjfkldsjfsd');
-    localStorage.removeItem('isLoggedIn');
-    this.isLoggedIn$.next('');
+    console.log('logout');
+   this.apiService.role$.next(null);
+   this.apiService.isLoggedIn$.next(false);
   }
 }
